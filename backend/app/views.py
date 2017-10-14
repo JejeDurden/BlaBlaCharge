@@ -90,13 +90,15 @@ def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
 ##------------------------------------------------------------##
 #set env
 main = Blueprint('main', __name__)
+#global var
 maps_key = "AIzaSyCJrQw4dgu7auRmHypUdwprbQKUnpqh0Ic"
+prim_key = "8005ceb8c33a4f88b8bcff3b53cac416"
+sec_key = "ae83cd4796654604a685d0ccd0f62cb4"
+vin1 = "SIM523751599"
 
 ##------------------------------------------------------------##
 #functions
 
-def search(text):
-    return text
 
     
 ##------------------------------------------------------------##
@@ -108,9 +110,9 @@ def index():
 
 
 
-@app.route("/api/stt", methods = ['GET', 'POST'])
+@app.route("/api/search", methods = ['GET', 'POST'])
 @crossdomain(origin='*')
-def carson_stt():
+def search():
     if 'path' in request.args:
         if request.args['path']:
             path = request.args['path']#.replace("_","/")
@@ -123,29 +125,4 @@ def carson_stt():
     
     
     
-@app.route("/api/tts", methods = ['GET', 'POST'])
-@crossdomain(origin='*')
-def carson_tts():
-    if 'text' in request.args:
-        if request.args['text']:
-            text = request.args['text']#.replace("_","/")
-            print(text)
-            out = tts.save_speech(text,path = "app/data/",filename="answer.mp3",lang="fr")
-            return(json.dumps({"response":"Success"}))
-        else:
-            return(json.dumps({"response":"Je n'ai pas compris "}))
-    return(json.dumps({"response":"Pas d'argument"}))
-
-@app.route("/api/converse", methods = ['GET', 'POST'])
-@crossdomain(origin='*')
-def carson_converse():
-    if 'text' in request.args:
-        if request.args['text']:
-            text = request.args['text']#.replace("_","/")
-            print(text)
-            out = rc.converse(text,lang="fr")
-            return(json.dumps({"response":out}))
-        else:
-            return(json.dumps({"response":"Je n'ai pas compris "}))
-    return(json.dumps({"response":"Pas d'argument"}))
 
