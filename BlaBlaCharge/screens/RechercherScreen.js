@@ -7,7 +7,11 @@ const LATITUDE = 0;
 const LONGITUDE = 0;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-export default class MapExample extends Component {
+
+let url = "http://a44d5c7f.ngrok.io/api/search?"
+
+
+export default class RechercherScreen extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -16,7 +20,8 @@ export default class MapExample extends Component {
         longitude: LONGITUDE,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
-      }
+      },
+      markers: []
     };
   }
   componentDidMount() {
@@ -37,15 +42,28 @@ export default class MapExample extends Component {
     this.watchID = navigator.geolocation.watchPosition(
       position => {
         this.setState({
-          region: {
+          current: {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
           }
         });
-      }
-    );
+      this.fetchProviders();
+    });
+  }
+
+  fetchProviders() {
+    url += `longitude=${this.state.region.longitude}&latitude=${this.state.region.latitude}`;
+    let self = this;
+    getProviders(url);
+    async function getProviders(url) {
+      let response = await fetch(url);
+      let providers = await response.json();
+      self.setState({
+          markers: providers.response
+      });
+    }
   }
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchID);
@@ -56,13 +74,20 @@ export default class MapExample extends Component {
         provider={ PROVIDER_GOOGLE }
         style={ styles.container }
         showsUserLocation={ true }
+        showsMyLocationButton={true}
         region={ this.state.region }
-        onRegionChange={ region => this.setState({region}) }
-        onRegionChangeComplete={ region => this.setState({region}) }
       >
         <MapView.Marker
           coordinate={ this.state.region }
+          pinColor={'#EC6B51'}
         />
+        {this.state.markers.map(marker => (
+         <MapView.Marker
+           key={marker.key}
+           coordinate={marker}
+           pinColor={'#A0D9B5'}
+         />
+       ))}
       </MapView>
     );
   }
