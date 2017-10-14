@@ -3,7 +3,7 @@ import { ExpoConfigView } from '@expo/samples';
 import { MapView } from 'expo';
 
 
-export default class SettingsScreen extends React.Component {
+export default class RechercherScreen extends React.Component {
   static navigationOptions = {
     title: 'Rechercher',
   };
