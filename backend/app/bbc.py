@@ -25,6 +25,7 @@ maps_key = "AIzaSyCJrQw4dgu7auRmHypUdwprbQKUnpqh0Ic"
 prim_key = "8005ceb8c33a4f88b8bcff3b53cac416"
 sec_key = "ae83cd4796654604a685d0ccd0f62cb4"
 vin1 = "SIM523751599"
+
 ##------------------------------------------------------------##
 
 def clean_response(data):

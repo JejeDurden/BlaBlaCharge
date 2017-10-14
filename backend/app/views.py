@@ -21,6 +21,11 @@ import pandas as pd
 import json
 from datetime import timedelta
 from functools import update_wrapper
+import googlemaps
+from datetime import datetime
+import httplib, urllib, base64
+from scipy import spatial as sp
+import numpy as np
 #import numpy as np
 
 
@@ -96,6 +101,7 @@ prim_key = "8005ceb8c33a4f88b8bcff3b53cac416"
 sec_key = "ae83cd4796654604a685d0ccd0f62cb4"
 vin1 = "SIM523751599"
 
+data = pd.read_csv("app/data/data.csv",sep=";")
 ##------------------------------------------------------------##
 #functions
 
@@ -113,12 +119,19 @@ def index():
 @app.route("/api/search", methods = ['GET', 'POST'])
 @crossdomain(origin='*')
 def search():
-    if 'path' in request.args:
-        if request.args['path']:
-            path = request.args['path']#.replace("_","/")
-            print(path)
-            out = stt.speech_to_text(path)
-            return(json.dumps({"response":out}))
+    if 'position' in request.args:
+        if request.args['position']:
+            position = request.args['position'].split(",")
+            print(position)
+            X = data[["latitude","longitude"]].as_matrix()
+            out = sp.distance.cdist([position],X,metric="euclidean")
+            out = out.argsort()[0][0:10]
+            #out = [list(data.loc[x].nom_station.values) for x in a.argsort()][0][0:3]
+            #lat = data.loc[out.argmin()].latitude
+            #long = data.loc[out.argmin()].longitude
+            #type_charge = data.loc[out.argmin()].type_charge
+            output = [{"latitude":data.loc[x].latitude,"longitude":data.loc[x].longitude,"type_charge":data.loc[x].type_charge} for x in out]
+            return(json.dumps({"response":output}))
         else:
             return(json.dumps({"response":"Je n'ai pas compris "}))
     return(json.dumps({"response":"Pas d'argument"}))
