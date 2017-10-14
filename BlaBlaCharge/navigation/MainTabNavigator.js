@@ -6,19 +6,27 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import PlanifierScreen from '../screens/PlanifierScreen';
+import RechercherScreen from '../screens/RechercherScreen';
+import ProposerScreen from '../screens/ProposerScreen';
+import AccountScreen from '../screens/AccountScreen';
 
 export default TabNavigator(
   {
-    Home: {
+    Accueil: {
       screen: HomeScreen,
     },
-    Links: {
-      screen: LinksScreen,
+    Planifier: {
+      screen: PlanifierScreen,
     },
-    Settings: {
-      screen: SettingsScreen,
+    Rechercher: {
+      screen: RechercherScreen,
+    },
+    Proposer: {
+      screen: ProposerScreen,
+    },
+    Compte: {
+      screen: AccountScreen,
     },
   },
   {
@@ -27,17 +35,27 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
+          case 'Accueil':
             iconName = Platform.OS === 'ios'
-              ? `ios-information-circle${focused ? '' : '-outline'}`
-              : 'md-information-circle';
+              ? `ios-home${focused ? '' : '-outline'}`
+              : 'md-home';
             break;
-          case 'Links':
+          case 'Planifier':
             iconName = Platform.OS === 'ios'
-              ? `ios-link${focused ? '' : '-outline'}`
-              : 'md-link';
+              ? `ios-map${focused ? '' : '-outline'}`
+              : 'md-map';
             break;
-          case 'Settings':
+          case 'Rechercher':
+            iconName = Platform.OS === 'ios'
+              ? `ios-options${focused ? '' : '-outline'}`
+              : 'md-options';
+            break;
+          case 'Proposer':
+            iconName = Platform.OS === 'ios'
+              ? `ios-options${focused ? '' : '-outline'}`
+              : 'md-options';
+            break;
+          case 'Compte':
             iconName = Platform.OS === 'ios'
               ? `ios-options${focused ? '' : '-outline'}`
               : 'md-options';
