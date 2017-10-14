@@ -25,7 +25,6 @@ from functools import update_wrapper
 
 
 
-
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -91,6 +90,7 @@ def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
 ##------------------------------------------------------------##
 #set env
 main = Blueprint('main', __name__)
+maps_key = "AIzaSyCJrQw4dgu7auRmHypUdwprbQKUnpqh0Ic"
 
 ##------------------------------------------------------------##
 #functions
