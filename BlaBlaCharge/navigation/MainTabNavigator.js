@@ -47,18 +47,18 @@ export default TabNavigator(
             break;
           case 'Rechercher':
             iconName = Platform.OS === 'ios'
-              ? `ios-options${focused ? '' : '-outline'}`
-              : 'md-options';
+              ? `ios-pin${focused ? '' : '-outline'}`
+              : 'md-pin';
             break;
           case 'Proposer':
             iconName = Platform.OS === 'ios'
-              ? `ios-options${focused ? '' : '-outline'}`
-              : 'md-options';
+              ? `ios-add${focused ? '' : '-outline'}`
+              : 'md-add';
             break;
           case 'Compte':
             iconName = Platform.OS === 'ios'
-              ? `ios-options${focused ? '' : '-outline'}`
-              : 'md-options';
+              ? `ios-people${focused ? '' : '-outline'}`
+              : 'md-people';
         }
         return (
           <Ionicons
