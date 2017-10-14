@@ -8,7 +8,6 @@ const LONGITUDE = 0;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-http://37004aa7.ngrok.io/api/search?position=latitude%2Clongitude
 const url = "http://37004aa7.ngrok.io/api/search?"
 
 
@@ -57,12 +56,10 @@ export default class RechercherScreen extends React.Component {
   fetchProviders() {
     url += `longitude=${this.state.region.longitude}&latitude=${this.state.region.latitude}`;
     let self = this;
-    console.log(url);
     getProviders(url);
     async function getProviders(url) {
       let response = await fetch(url);
       let providers = await response.json();
-      console.log(providers);
       self.setState({
           markers: providers.response
       });
@@ -77,6 +74,7 @@ export default class RechercherScreen extends React.Component {
         provider={ PROVIDER_GOOGLE }
         style={ styles.container }
         showsUserLocation={ true }
+        showsMyLocationButton={true}
         region={ this.state.region }
       >
         <MapView.Marker
