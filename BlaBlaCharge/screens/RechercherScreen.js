@@ -1,7 +1,16 @@
-import React from 'react';
+import React from 'react'
 import { ExpoConfigView } from '@expo/samples';
 import { MapView } from 'expo';
-
+import {
+  Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Button,
+} from 'react-native';
 
 export default class RechercherScreen extends React.Component {
   static navigationOptions = {

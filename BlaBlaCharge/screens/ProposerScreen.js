@@ -8,6 +8,12 @@ export default class ProposerScreen extends React.Component {
   };
 
     render() {
-        return <ExpoConfigView />
+        return (
+          <View>
+            <Image
+              source={require('../assets/images/teschoque.jpg')}
+            />
+          </View>
+        );
     }
 }
