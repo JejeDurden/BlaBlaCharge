@@ -8,7 +8,7 @@ const LONGITUDE = 0;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-const url = "http://a44d5c7f.ngrok.io/api/search?"
+let url = "http://a44d5c7f.ngrok.io/api/search?"
 
 
 export default class RechercherScreen extends React.Component {
@@ -79,10 +79,13 @@ export default class RechercherScreen extends React.Component {
       >
         <MapView.Marker
           coordinate={ this.state.region }
+          pinColor={'#EC6B51'}
         />
         {this.state.markers.map(marker => (
          <MapView.Marker
+           key={marker.key}
            coordinate={marker}
+           pinColor={'#A0D9B5'}
          />
        ))}
       </MapView>
