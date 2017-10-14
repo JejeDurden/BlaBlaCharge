@@ -8,7 +8,6 @@ export default class SettingsScreen extends React.Component {
   };
 
     render() {
-        return <>
-      );
+        return <ExpoConfigView />
     }
 }
