@@ -119,18 +119,20 @@ def index():
 @app.route("/api/search", methods = ['GET', 'POST'])
 @crossdomain(origin='*')
 def search():
-    if 'position' in request.args:
-        if request.args['position']:
-            position = request.args['position'].split(",")
-            print(position)
+    if 'latitude' in request.args or "longitude" in request.args:
+        if request.args['latitude'] and request.args['longitude'] :
+            latitude = request.args['latitude']
+            longitude = request.args['longitude']
+            print(latitude)
+            print(longitude)
             X = data[["latitude","longitude"]].as_matrix()
-            out = sp.distance.cdist([position],X,metric="euclidean")
+            out = sp.distance.cdist([[latitude,longitude]],X,metric="euclidean")
             out = out.argsort()[0][0:10]
             #out = [list(data.loc[x].nom_station.values) for x in a.argsort()][0][0:3]
             #lat = data.loc[out.argmin()].latitude
             #long = data.loc[out.argmin()].longitude
             #type_charge = data.loc[out.argmin()].type_charge
-            output = [{"latitude":data.loc[x].latitude,"longitude":data.loc[x].longitude,"type_charge":data.loc[x].type_charge} for x in out]
+            output = [{"latitude":data.loc[x].latitude,"longitude":data.loc[x].longitude,"type_charge":data.loc[x].type_charge,"prix":data.loc[x].prix,"distance":} for x in out]
             return(json.dumps({"response":output}))
         else:
             return(json.dumps({"response":"Je n'ai pas compris "}))
