@@ -3,7 +3,7 @@ import { ExpoConfigView } from '@expo/samples';
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Rechercher',
+    title: 'Compte',
   };
 
   render() {
