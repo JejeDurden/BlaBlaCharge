@@ -26,7 +26,6 @@ from datetime import datetime
 import httplib, urllib, base64
 from scipy import spatial as sp
 import numpy as np
-#import numpy as np
 
 
 
@@ -104,6 +103,20 @@ vin1 = "SIM523751599"
 data = pd.read_csv("app/data/data.csv",sep=";")
 ##------------------------------------------------------------##
 #functions
+gmaps = googlemaps.Client(key=maps_key)
+def get_direction(start,end):
+    now = datetime.now()
+    directions_result = gmaps.directions(start,
+                                         end,
+                                         mode="driving",
+                                         departure_time=now)
+    print("______________________________")
+    print(directions_result)
+    try:
+        return(directions_result[0]["legs"][0]["distance"])
+    except Exception as e:
+        print(e)
+        return(None)
 
 
     
@@ -132,7 +145,7 @@ def search():
             #lat = data.loc[out.argmin()].latitude
             #long = data.loc[out.argmin()].longitude
             #type_charge = data.loc[out.argmin()].type_charge
-            output = [{"latitude":data.loc[x].latitude,"longitude":data.loc[x].longitude,"type_charge":data.loc[x].type_charge,"prix":data.loc[x].prix,"distance":} for x in out]
+            output = [{"key":x,"latitude":data.loc[x].latitude,"longitude":data.loc[x].longitude,"type_charge":data.loc[x].type_charge,"prix":data.loc[x].prix,"distance":get_direction(str(latitude)+","+str(longitude),str(data.loc[x].latitude)+","+str(data.loc[x].longitude))} for x in out]
             return(json.dumps({"response":output}))
         else:
             return(json.dumps({"response":"Je n'ai pas compris "}))
