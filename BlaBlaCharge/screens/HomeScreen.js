@@ -32,22 +32,33 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{
+        flex: 1,
+         flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
           <View style={styles.statusBar} />
+          <View>
           <Button
-              style={{backgroundColor: 'red'}} textStyle={{fontSize: 18}}
+              style={{backgroundColor: '#abd9b5', borderColor: "white", width: '75%'}} textStyle={{fontSize: 18, color: 'white'}}
               onPress={() => { this.props.navigation.navigate('Rechercher')}}
           >
-              Rechercher
+              Rechercher une borne
           </Button>
           <Button
-              onPress={() => { this.props.navigation.navigate('Planifier')}}
-              title="Planifier"
-          />
-          <Button
+              style={{backgroundColor: 'white', borderColor: "#abd9b5"}} textStyle={{fontSize: 18, color: '#abd9b5'}}
               onPress={() => { this.props.navigation.navigate('Proposer')}}
-              title="Proposer"
-          />
+          >
+              Proposer vos services
+          </Button>
+          <Button
+              style={{backgroundColor: 'white', borderColor: "#abd9b5"}} textStyle={{fontSize: 18, color: '#abd9b5'}}
+              onPress={() => { this.props.navigation.navigate('Planifier')}}
+          >
+              Planifier un trajet
+          </Button>
+          </View>
       </View>
     );
   }
