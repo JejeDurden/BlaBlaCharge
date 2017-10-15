@@ -28,6 +28,7 @@ export default class RechercherScreen extends React.Component {
     navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
+          try: 1,
           region: {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
@@ -49,7 +50,10 @@ export default class RechercherScreen extends React.Component {
             longitudeDelta: LONGITUDE_DELTA,
           }
         });
-      this.fetchProviders();
+      if (this.state.try) {
+        this.fetchProviders();
+      }
+      this.state.try = 0;
     });
   }
 
