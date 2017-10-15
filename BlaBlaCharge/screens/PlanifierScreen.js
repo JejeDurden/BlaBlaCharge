@@ -33,7 +33,7 @@ export default class PlanifierScreen extends React.Component {
           <View style={styles.statusBar}/>
           <Image
             style={{width: '100%', height:'100%'}}
-            source={require('../assets/images/plannifier.png')}
+            source={require('../assets/images/planifier.png')}
           />
         </View>
       );

@@ -41,7 +41,7 @@ export default class App extends React.Component {
         require('./assets/images/propal.png'),
         require('./assets/images/PROFIL_RECHARGEe.png'),
         require('./assets/images/bg-prof4x.png'),
-        require('./assets/images/plannifier.png'),
+        require('./assets/images/planifier.png'),
 
       ]),
       Font.loadAsync([
