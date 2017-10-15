@@ -40,6 +40,7 @@ export default class HomeScreen extends React.Component {
       }}>
           <View style={styles.statusBar} />
           <View>
+          <Text style={{color: 'black'}}>Voyagez toujours plus loin dans Pamela</Text>
           <Button
               style={{backgroundColor: '#abd9b5', borderColor: "white", width: '75%'}} textStyle={{fontSize: 18, color: 'white'}}
               onPress={() => { this.props.navigation.navigate('Rechercher')}}
@@ -59,6 +60,10 @@ export default class HomeScreen extends React.Component {
               Planifier un trajet
           </Button>
           </View>
+          <Image
+            style={{width: '100%', height:'100%', position: 'absolute', zIndex: -1}}
+            source={require('../assets/images/bg.png')}
+          />
       </View>
     );
   }

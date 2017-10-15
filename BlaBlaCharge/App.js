@@ -34,6 +34,7 @@ export default class App extends React.Component {
     return Promise.all([
       Asset.loadAsync([
         require('./assets/images/teschoque.jpg'),
+        require('./assets/images/bg.png'),
         require('./assets/images/pdc-non-select.png'),
         require('./assets/images/pdc-select.png'),
         require('./assets/images/PROF.png'),
@@ -48,7 +49,7 @@ export default class App extends React.Component {
         Ionicons.font,
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
-        { 'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf') },
+        { 'space-mono': require('./assets/fonts/RobotoCondensed-Regular.ttf') },
       ]),
     ]);
   };
