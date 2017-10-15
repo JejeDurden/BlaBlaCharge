@@ -70,9 +70,13 @@ export default TabNavigator(
         );
       },
     }),
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false,
+      tabBarComponent: TabBarBottom,
+      tabBarPosition: 'bottom',
+      animationEnabled: false,
+      swipeEnabled: false,
+      tabBarOptions: {
+          activeTintColor: Colors.tabIconSelected,
+          inactiveTintColor: Colors.tabIconDefault
+      }
   }
 );
