@@ -40,7 +40,6 @@ export default class HomeScreen extends React.Component {
       }}>
           <View style={styles.statusBar} />
           <View>
-          <Text style={{color: 'black'}}>Voyagez toujours plus loin dans Pamela</Text>
           <Button
               style={{backgroundColor: '#abd9b5', borderColor: "white", width: '75%'}} textStyle={{fontSize: 18, color: 'white'}}
               onPress={() => { this.props.navigation.navigate('Rechercher')}}
