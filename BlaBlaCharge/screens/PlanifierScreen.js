@@ -1,32 +1,41 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { MapView } from 'expo';
+import { Constants } from 'expo';
+import {
+  Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Button,
+} from 'react-native';
+
+const styles = StyleSheet.create({
+       statusBar: {
+           backgroundColor: "#bfc7bb",
+           height: Constants.statusBarHeight,
+           opacity: 0.31,
+
+       },
+
+       // rest of the styles
+   });
 
 
 export default class PlanifierScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-
   render() {
       return (
-        <MapView
-          style={{ flex: 1 }}
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        />
-    );
+        <View>
+          <View style={styles.statusBar}/>
+          <Image
+            style={{width: '100%', height:'100%'}}
+            source={require('../assets/images/plannifier.png')}
+          />
+        </View>
+      );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-});
