@@ -1,4 +1,5 @@
 import React from 'react';
+import { Constants } from 'expo';
 import { ExpoConfigView } from '@expo/samples';
 import {
   Image,
@@ -11,17 +12,30 @@ import {
   Button,
 } from 'react-native';
 
+const styles = StyleSheet.create({
+       statusBar: {
+           backgroundColor: "#bfc7bb",
+           height: Constants.statusBarHeight,
+           opacity: 0.31,
+
+       },
+
+       // rest of the styles
+   });
+
 
 export default class ProposerScreen extends React.Component {
   static navigationOptions = {
-    title: 'Proposer',
+    header: null,
   };
 
     render() {
         return (
           <View>
+            <View style={styles.statusBar}/>
             <Image
-              source={require('../assets/images/teschoque.jpg')}
+              style={{width: '100%', height:'100%'}}
+              source={require('../assets/images/propal.png')}
             />
           </View>
         );

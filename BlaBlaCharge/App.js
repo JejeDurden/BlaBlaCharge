@@ -35,9 +35,11 @@ export default class App extends React.Component {
       Asset.loadAsync([
         require('./assets/images/teschoque.jpg'),
         require('./assets/images/pdc-non-select.png'),
-        require('./assets/images/pdc-selec@2x.png'),
-        require('./assets/images/PROF_2.png'),
+        require('./assets/images/pdc-select.png'),
+        require('./assets/images/PROF.png'),
+        require('./assets/images/propal.png'),
         require('./assets/images/PROFIL_RECHARGE.png'),
+        require('./assets/images/bg-prof4x.png'),
       ]),
       Font.loadAsync([
         // This is the font that we are using for our tab bar

@@ -1,14 +1,41 @@
 import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import { Constants } from 'expo';
+import {
+  Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Button,
+} from 'react-native';
+
+const styles = StyleSheet.create({
+       statusBar: {
+           backgroundColor: "#bfc7bb",
+           height: Constants.statusBarHeight,
+           opacity: 0.31,
+
+       },
+
+       // rest of the styles
+   });
+
 
 export default class AccountScreen extends React.Component {
   static navigationOptions = {
-    title: 'Compte',
+    header: null,
   };
-
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
-    return <ExpoConfigView />;
+      return (
+        <View>
+          <View style={styles.statusBar}/>
+          <Image
+            style={{width: '100%', height:'100%'}}
+            source={require('../assets/images/bg-prof4x.png')}
+          />
+        </View>
+      );
   }
 }

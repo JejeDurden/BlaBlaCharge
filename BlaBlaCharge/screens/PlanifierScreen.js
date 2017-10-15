@@ -5,7 +5,7 @@ import { MapView } from 'expo';
 
 export default class PlanifierScreen extends React.Component {
   static navigationOptions = {
-    title: 'Planifier',
+    header: null,
   };
 
   render() {

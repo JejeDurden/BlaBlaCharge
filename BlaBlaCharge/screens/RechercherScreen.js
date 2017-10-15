@@ -12,6 +12,10 @@ let url = "https://ac60bbf5.ngrok.io/api/search?"
 
 
 export default class RechercherScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   constructor() {
     super();
     this.state = {
@@ -89,7 +93,7 @@ export default class RechercherScreen extends React.Component {
          <MapView.Marker
            key={marker.key}
            coordinate={marker}
-           image={require('../assets/images/pdc-non-select.png')}
+           image={require('../assets/images/pdc-select.png')}
          />
        ))}
       </MapView>
