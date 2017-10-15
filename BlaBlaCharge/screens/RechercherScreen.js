@@ -8,7 +8,7 @@ const LONGITUDE = 0;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-let url = "http://a44d5c7f.ngrok.io/api/search?"
+let url = "https://ac60bbf5.ngrok.io/api/search?"
 
 
 export default class RechercherScreen extends React.Component {
@@ -85,7 +85,7 @@ export default class RechercherScreen extends React.Component {
          <MapView.Marker
            key={marker.key}
            coordinate={marker}
-           pinColor={'#A0D9B5'}
+           image={require('../assets/images/pdc-non-select.png')}
          />
        ))}
       </MapView>

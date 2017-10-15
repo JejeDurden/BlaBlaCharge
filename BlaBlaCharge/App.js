@@ -34,6 +34,7 @@ export default class App extends React.Component {
     return Promise.all([
       Asset.loadAsync([
         require('./assets/images/teschoque.jpg'),
+        require('./assets/images/pdc-non-select.png'),
       ]),
       Font.loadAsync([
         // This is the font that we are using for our tab bar
